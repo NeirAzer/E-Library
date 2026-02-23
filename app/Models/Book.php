@@ -10,6 +10,10 @@ class Book extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'publication_at' => 'datetime',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
