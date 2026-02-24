@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
         ]);
 
-        \App\Models\Author::factory(10)->create();
-        \App\Models\Book::factory(7)->create();
+        \App\Models\Author::factory(6)->create();
+        \App\Models\Book::factory(30)->create();
     }
 }
