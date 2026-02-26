@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +15,22 @@ class Book extends Model
     protected $casts = [
         'publication_at' => 'datetime',
     ];
+
+    #[Scope]
+    protected function search(Builder $query, array $filters)
+    {
+        $query->when($filters['search'] ?? false,
+            fn ($query, $search) =>
+            $query->where('name', 'like', '%'.$search.'%'));
+
+        $query->when($filters['category'] ?? false,
+            fn ($query, $category) =>
+            $query->whereHas('category', fn ($query) => $query->where('slug', $category)));
+
+        $query->when($filters['author'] ?? false,
+            fn ($query, $author) =>
+            $query->whereHas('author', fn ($query) => $query->where('slug', $author)));
+    }
 
     protected $with = ['author', 'category'];
 

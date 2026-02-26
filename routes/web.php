@@ -15,5 +15,3 @@ Route::get('/about', function () {
 });
 Route::get('/hall', [HallController::class, 'index']);
 Route::get('/hall/book/{book:slug}', [HallController::class, 'singleBook']);
-Route::get('/hall/author/{author:slug}', [HallController::class, 'hallAuthor']);
-Route::get('/hall/category/{category:slug}', [HallController::class, 'hallCategory']);
