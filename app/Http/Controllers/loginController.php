@@ -38,16 +38,41 @@ class loginController extends Controller
 
     public function authenticate(Request $request)
     {
+        // return dd($request->all());
+
         $credentials = $request->validate([
             'username' => 'required|string|min:3',
             'password' => 'required|string|min:8'
         ]);
-
+ 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+
+            $user = Auth::user();
+            $role = $user->role;
+
+            switch ($role) {
+                case 'admin':
+                    return redirect()->intended('/dashboard');
+                case 'user':
+                    return redirect()->intended('/');
+                
+                default:
+                    Auth::logout();
+                    return redirect('/login')->with('error', 'Unauthorized role!');
+            }
+ 
         }
 
-        return back()->with('error', 'Login failed! Please check your username and password.');
+        return back()->with('error', 'Login failed!');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
