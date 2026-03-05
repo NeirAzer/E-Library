@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\categoryController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\loginController;
@@ -29,4 +31,13 @@ Route::prefix('dashboard')->middleware(['auth', 'isAdmin'])->group(function () {
             'title' => 'Dashboard'
         ]);
     });
+
+    Route::get('category', [categoryController::class, 'index']);
+    Route::get('category/create', [categoryController::class, 'create']);
+    Route::get('category/{category:slug}/edit', [categoryController::class, 'edit']);
+    Route::post('category', [categoryController::class, 'store']);
+    Route::put('category/{category:slug}', [categoryController::class, 'update']);
+    Route::delete('category/{category:slug}', [categoryController::class, 'destroy']);
+    
+    Route::resource('author', AuthorController::class);
 });

@@ -6,10 +6,26 @@
         <ul class="mt-4">
             <span class="text-gray-400 font-bold">ADMIN</span>
             <li class="my-3 group">
-                <a href=""
+                <a href="/dashboard"
                     class="flex font-semibold items-center transition py-2 px-4 {{ request()->is('dashboard') ? 'bg-gray-950 text-white' : 'text-gray-900 bg-white ' }} rounded-md">
                     <i class="ri-home-2-line mr-3 text-lg"></i>
                     <span class="text-sm">Dashboard</span>
+                </a>
+            </li>
+            <li class="my-3 group">
+                <a href="/dashboard/category"
+                    class="flex font-semibold items-center transition py-2 px-4 {{ request()->is('dashboard/category') ? 'bg-gray-950 text-white' : 'text-gray-900 bg-white ' }} rounded-md">
+                    <i class="fa-solid fa-chart-bar mr-3 text-lg"></i>
+                    <span class="text-sm">Category</span>
+                </a>
+            </li>
+            <li class="my-3 group">
+                <a href="/dashboard/author"
+                    class="flex font-semibold items-center transition py-2 px-4 {{ request()->is('dashboard/author') ? 'bg-gray-950 text-white' : 'text-gray-900 bg-white ' }} rounded-md">
+                    <i class="fa-solid fa-address-book mr-3 text-lg"></i>
+                    <span class="text-sm">Author</span>
+                </a>
+            </li>
                 </a>
             </li>
             {{-- <span class="text-gray-400 font-bold">PERSONAL</span>
