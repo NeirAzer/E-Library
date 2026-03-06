@@ -26,6 +26,11 @@
                     <span class="text-sm">Author</span>
                 </a>
             </li>
+            <li class="my-3 group">
+                <a href="/dashboard/user"
+                    class="flex font-semibold items-center transition py-2 px-4 {{ request()->is('dashboard/user') ? 'bg-gray-950 text-white' : 'text-gray-900 bg-white ' }} rounded-md">
+                    <i class="fa-solid fa-users mr-3 text-lg"></i>
+                    <span class="text-sm">User</span>
                 </a>
             </li>
             {{-- <span class="text-gray-400 font-bold">PERSONAL</span>

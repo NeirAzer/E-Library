@@ -5,6 +5,7 @@ use App\Http\Controllers\categoryController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [homeController::class, 'index']);
@@ -40,4 +41,5 @@ Route::prefix('dashboard')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::delete('category/{category:slug}', [categoryController::class, 'destroy']);
     
     Route::resource('author', AuthorController::class);
+    Route::resource('user', UserController::class);
 });
