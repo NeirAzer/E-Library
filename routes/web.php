@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\UserController;
+use App\Models\Borrow;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [homeController::class, 'index']);
@@ -26,6 +29,8 @@ Route::post('/register', [loginController::class, 'store'])->middleware('guest')
 
 Route::post('/logout', [loginController::class, 'logout'])->middleware('auth');
 
+Route::post('/borrow', [BorrowController::class, 'store'])->middleware('auth');
+
 Route::prefix('dashboard')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/', function () {
         return view('dashboard.dashboard', [
@@ -42,4 +47,5 @@ Route::prefix('dashboard')->middleware(['auth', 'isAdmin'])->group(function () {
     
     Route::resource('author', AuthorController::class);
     Route::resource('user', UserController::class);
+    Route::resource('book', BookController::class);
 });

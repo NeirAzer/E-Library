@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('cover')->nullable();
             $table->text('body');
+            $table->boolean('status')->default(false);
             $table->timestamp('publication_at')->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('author_id')->constrained()->onDelete('cascade');
