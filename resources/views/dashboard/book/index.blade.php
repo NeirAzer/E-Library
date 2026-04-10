@@ -43,8 +43,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($books as $book)               
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                @if ($books->count())
+                    
+                    @foreach ($books as $book)               
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-gray-400">
                         {{ $loop->iteration }}
                     </th>
@@ -79,8 +81,18 @@
                             </form>
                         </div>
                     </td>
-                </tr>
-                @endforeach
+                    </tr>
+                    @endforeach
+                
+                @else
+                
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                        <td colspan="12" class="text-center p-4 font-semibold">
+                            Tidak ada data
+                        </td>
+                    </tr>
+
+                @endif
             </tbody>
         </table>
         {{-- Pagination --}}

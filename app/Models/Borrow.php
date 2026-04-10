@@ -12,6 +12,11 @@ class Borrow extends Model
     protected $guarded = ['id'];
     protected $with = ['book', 'user'];
 
+    protected $casts = [
+        'borrow_date' => 'datetime',
+        'due_date' => 'datetime'
+    ];
+
     public function book()
     {
         return $this->belongsTo(Book::class);

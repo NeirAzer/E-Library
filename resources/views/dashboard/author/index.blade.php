@@ -34,6 +34,8 @@
                 </tr>
             </thead>
             <tbody>
+                @if ($authors->count())
+                    
                 @foreach ($authors as $author)               
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-gray-400">
@@ -63,8 +65,18 @@
                     </td>
                 </tr>
                 @endforeach
+                @else
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                    <td colspan="9" class="text-center p-4 font-semibold">
+                        Tidak ada data
+                    </td>
+                </tr>
+                @endif
             </tbody>
         </table>
+        <div class="mt-8">
+            {{ $authors->links() }}
+        </div>
       </div>
     </div>
   </div>
