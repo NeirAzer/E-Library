@@ -17,6 +17,10 @@
                             class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('hall*') ? 'text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">Hall</a>
                         <a href="/about"
                             class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('about*') ? 'text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">About</a>
+                        @auth
+                            <a href="/borrows/{{ auth()->user()->slug }}"
+                                class="rounded-md px-3 py-2 text-sm font-medium {{ request()->is('borrows*') ? 'text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">Borrows</a>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -113,6 +117,11 @@
                     class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('hall*') ? 'text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">Hall</a>
                 <a href="/about"
                     class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('about*') ? 'text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">About</a>
+                @auth
+                    <a href="/borrows/{{ auth()->user()->slug }}"
+                        class="block rounded-md px-3 py-2 text-base font-medium {{ request()->is('borrows*') ? 'text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">Borrows</a>
+                    
+                @endauth
             </div>
             <div class="border-t border-gray-700 pt-4 pb-3">
                 <div class="flex items-center px-5">

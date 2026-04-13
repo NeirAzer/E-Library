@@ -30,6 +30,7 @@ Route::post('/register', [loginController::class, 'store'])->middleware('guest')
 Route::post('/logout', [loginController::class, 'logout'])->middleware('auth');
 
 Route::post('/borrow', [BorrowController::class, 'store'])->middleware('auth');
+Route::get('/borrows/{user:slug}', [BorrowController::class, 'userIndex'])->name('borrows')->middleware('auth');
 
 Route::prefix('dashboard')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/', function () {

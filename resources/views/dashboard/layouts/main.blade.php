@@ -6,37 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    @vite('resources/css/app.css')
-    <title>{{ $title }}</title>
- 
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <title>E-Library | {{ $title }}</title>
+    @vite('resources/css/dashboard.css')
+
 </head>
 <body class="text-gray-800 font-inter">
-    <!--sidenav -->
     @include('dashboard.partials.sidebar')
-    <!-- end sidenav -->
- 
+
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
-        <!-- navbar -->
-        @include('dashboard.partials.navbar')
-        <!-- end navbar -->
- 
+      @include('dashboard.partials.navbar')
+
       <!-- Content -->
-      <div class="p-6">
-        @yield('content')
-      </div>
+        <div class="p-6">
+            @yield('content')
+        </div>
       <!-- End Content -->
     </main>
- 
+
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
- 
+
     <script>
         // start: Sidebar
         const sidebarToggle = document.querySelector('.sidebar-toggle')
@@ -70,9 +68,9 @@
             })
         })
         // end: Sidebar
- 
- 
- 
+
+
+
         // start: Popper
         const popperInstance = {}
         document.querySelectorAll('.dropdown').forEach(function (item, index) {
@@ -116,7 +114,7 @@
                 hideDropdown()
             }
         })
- 
+
         function hideDropdown() {
             document.querySelectorAll('.dropdown-menu').forEach(function (item) {
                 item.classList.add('hidden')
@@ -147,6 +145,6 @@
         }
         // end: Popper
     </script>
- 
+
 </body>
 </html>
