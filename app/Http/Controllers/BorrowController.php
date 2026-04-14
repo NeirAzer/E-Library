@@ -50,6 +50,9 @@ class BorrowController extends Controller
     public function update(Request $request, Borrow $borrow)
     {
         $borrow->status = $request->status;
+        if ($request->filled('message')) {
+            $borrow->message = $request->message;
+        }
         $borrow->save();
 
         $book = Book::find($borrow->book_id);
@@ -75,6 +78,12 @@ class BorrowController extends Controller
         $title = $user->name . ' Borrows';
         $borrows = Borrow::where('user_id', $user->id)->latest()->paginate(9);
         return view('borrows', compact('borrows', 'title'));
+    }
+
+    public function detail(Borrow $borrow)
+    {
+        $title = 'Borrow Detail';
+        return view('borrow-detail', compact('borrow', 'title'));
     }
 
 }
